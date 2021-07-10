@@ -1,0 +1,11 @@
+UC1:-
+->create database payroll_service;
+->show databases;
+->use payroll_service;
+UC2:-
+->Create table employee_payroll
+->( id int AUTO INCREMENT,Name varchar(10),salary int,start Date);
+UC3:-
+->Insert into employee_payroll values(101,"RAJ",200000,'2014-08-12');
+UC4:-
+->Select * from employee_payroll;
