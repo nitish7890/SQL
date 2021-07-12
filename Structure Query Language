@@ -1,11 +1,239 @@
-UC1:-
-->create database payroll_service;
-->show databases;
-->use payroll_service;
-UC2:-
-->Create table employee_payroll
-->( id int AUTO INCREMENT,Name varchar(10),salary int,start Date);
-UC3:-
-->Insert into employee_payroll values(101,"RAJ",200000,'2014-08-12');
-UC4:-
-->Select * from employee_payroll;
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 4
+Server version: 5.1.33-community MySQL Community Server (GPL)
+
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| employee_language  |
+| mysql              |
+| payroll_service    |
+| student            |
+| student_manage     |
+| test               |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use payroll_service;
+Database changed
+mysql> create table payroll_employee(id int NOT NULL,Name varchar(10),Address varchar(20), Gender varchar(1),start Date);
+Query OK, 0 rows affected (0.02 sec)
+
+
+mysql> desc employee_service;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int(11)     | YES  |     | NULL    |       |
+| Name   | varchar(20) | YES  |     | NULL    |       |
+| salary | double      | YES  |     | NULL    |       |
+| start  | date        | YES  |     | NULL    |       |
+| Gender | varchar(1)  | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> Alter table payroll_employee Add(salary int);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee_service;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int(11)     | YES  |     | NULL    |       |
+| Name   | varchar(20) | YES  |     | NULL    |       |
+| salary | double      | YES  |     | NULL    |       |
+| start  | date        | YES  |     | NULL    |       |
+| Gender | varchar(1)  | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> Alter table payroll_employee Drop column Gender;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee_service;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int(11)     | YES  |     | NULL    |       |
+| Name   | varchar(20) | YES  |     | NULL    |       |
+| salary | double      | YES  |     | NULL    |       |
+| start  | date        | YES  |     | NULL    |       |
+| Gender | varchar(1)  | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> desc payroll_employee;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int(11)     | NO   |     | NULL    |       |
+| Name    | varchar(10) | YES  |     | NULL    |       |
+| Address | varchar(20) | YES  |     | NULL    |       |
+| start   | date        | YES  |     | NULL    |       |
+| salary  | int(11)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> Alter table payroll_employee add(phone int(10));
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc payroll_employee;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int(11)     | NO   |     | NULL    |       |
+| Name    | varchar(10) | YES  |     | NULL    |       |
+| Address | varchar(20) | YES  |     | NULL    |       |
+| start   | date        | YES  |     | NULL    |       |
+| salary  | int(11)     | YES  |     | NULL    |       |
+| phone   | int(10)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> Alter table payroll_employee drop column phone;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc payroll_employee;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int(11)     | NO   |     | NULL    |       |
+| Name    | varchar(10) | YES  |     | NULL    |       |
+| Address | varchar(20) | YES  |     | NULL    |       |
+| start   | date        | YES  |     | NULL    |       |
+| salary  | int(11)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+
+mysql> insert into payroll_employee values(101,"RAJ","BANGLORE",'2012-09-07',100000),(102,"MOHAN","DELHI",now(),50000),(103,"RAJU","RANCHI",'2013-08-19',40000),(104,"SRIKANT","HYDRABAD",'2015-12-23',30000),(105,"ANIKET","NOIDA",'2017-12-12',20000);
+Query OK, 5 rows affected, 1 warning (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 1
+
+mysql> SELECT * FROM payroll_employee;
++-----+---------+----------+------------+--------+
+| id  | Name    | Address  | start      | salary |
++-----+---------+----------+------------+--------+
+| 101 | RAJ     | BANGLORE | 2012-09-07 | 100000 |
+| 102 | MOHAN   | DELHI    | 2021-07-12 |  50000 |
+| 103 | RAJU    | RANCHI   | 2013-08-19 |  40000 |
+| 104 | SRIKANT | HYDRABAD | 2015-12-23 |  30000 |
+| 105 | ANIKET  | NOIDA    | 2017-12-12 |  20000 |
++-----+---------+----------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from payroll_employee where salary>40000;
++-----+-------+----------+------------+--------+
+| id  | Name  | Address  | start      | salary |
++-----+-------+----------+------------+--------+
+| 101 | RAJ   | BANGLORE | 2012-09-07 | 100000 |
+| 102 | MOHAN | DELHI    | 2021-07-12 |  50000 |
++-----+-------+----------+------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select Name ,Address from payroll_employee where id=104;
++---------+----------+
+| Name    | Address  |
++---------+----------+
+| SRIKANT | HYDRABAD |
++---------+----------+
+1 row in set (0.00 sec)
+
+mysql> Alter table payroll_employee add(Gender varchar(1));
+Query OK, 5 rows affected (0.03 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from payroll_employee;
++-----+---------+----------+------------+--------+--------+
+| id  | Name    | Address  | start      | salary | Gender |
++-----+---------+----------+------------+--------+--------+
+| 101 | RAJ     | BANGLORE | 2012-09-07 | 100000 | NULL   |
+| 102 | MOHAN   | DELHI    | 2021-07-12 |  50000 | NULL   |
+| 103 | RAJU    | RANCHI   | 2013-08-19 |  40000 | NULL   |
+| 104 | SRIKANT | HYDRABAD | 2015-12-23 |  30000 | NULL   |
+| 105 | ANIKET  | NOIDA    | 2017-12-12 |  20000 | NULL   |
++-----+---------+----------+------------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> update payroll_employee set Gender='M' where id in(101,102,103,104,105);
+Query OK, 5 rows affected (0.01 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> select * from payroll_employee;
++-----+---------+----------+------------+--------+--------+
+| id  | Name    | Address  | start      | salary | Gender |
++-----+---------+----------+------------+--------+--------+
+| 101 | RAJ     | BANGLORE | 2012-09-07 | 100000 | M      |
+| 102 | MOHAN   | DELHI    | 2021-07-12 |  50000 | M      |
+| 103 | RAJU    | RANCHI   | 2013-08-19 |  40000 | M      |
+| 104 | SRIKANT | HYDRABAD | 2015-12-23 |  30000 | M      |
+| 105 | ANIKET  | NOIDA    | 2017-12-12 |  20000 | M      |
++-----+---------+----------+------------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from payroll_employee where id NOT IN(101,102);
++-----+---------+----------+------------+--------+--------+
+| id  | Name    | Address  | start      | salary | Gender |
++-----+---------+----------+------------+--------+--------+
+| 103 | RAJU    | RANCHI   | 2013-08-19 |  40000 | M      |
+| 104 | SRIKANT | HYDRABAD | 2015-12-23 |  30000 | M      |
+| 105 | ANIKET  | NOIDA    | 2017-12-12 |  20000 | M      |
++-----+---------+----------+------------+--------+--------+
+3 rows in set (0.00 sec)
+
+
+mysql> select * from payroll_employee ORDER BY Name;
++-----+---------+----------+------------+--------+--------+
+| id  | Name    | Address  | start      | salary | Gender |
++-----+---------+----------+------------+--------+--------+
+| 105 | ANIKET  | NOIDA    | 2017-12-12 |  20000 | M      |
+| 102 | MOHAN   | DELHI    | 2021-07-12 |  50000 | M      |
+| 101 | RAJ     | BANGLORE | 2012-09-07 | 100000 | M      |
+| 103 | RAJU    | RANCHI   | 2013-08-19 |  40000 | M      |
+| 104 | SRIKANT | HYDRABAD | 2015-12-23 |  30000 | M      |
++-----+---------+----------+------------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select MAX(salary) from payroll_employee;
++-------------+
+| MAX(salary) |
++-------------+
+|      100000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select MIN(salary) from payroll_employee;
++-------------+
+| MIN(salary) |
++-------------+
+|       20000 |
++-------------+
+1 row in set (0.00 sec)
+
+
+mysql> select  count(*) from payroll_employee;
++----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select  avg(salary) from payroll_employee;
++-------------+
+| avg(salary) |
++-------------+
+|  48000.0000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>
